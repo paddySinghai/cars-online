@@ -1,0 +1,7 @@
+package com.cognizant.cars.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class CarDetailsController {
+}
