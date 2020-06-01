@@ -1,7 +1,8 @@
 package com.cognizant.cars.service;
 
-import org.springframework.stereotype.Service;
+import com.cognizant.cars.dto.GenericOutputDto;
+import com.cognizant.cars.exception.CarsBusinessException;
 
-@Service
 public interface CarDetailsService {
+  public GenericOutputDto fetchCarList() throws CarsBusinessException;
 }

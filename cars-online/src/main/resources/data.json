@@ -1,0 +1,102 @@
+[
+  {
+    "_class": "com.cognizant.cars.dto.model.Car",
+    "_id": 1,
+    "make": "Volkswagen",
+    "model": "Jetta III",
+    "year_model": 1995,
+    "price": 12947.52,
+    "licensed": true,
+    "date_added": "2018-09-18",
+    "warehouse" : {
+      "_class": "com.cognizant.cars.dto.model.Warehouse",
+      "_id": "1",
+      "name": "Warehouse A",
+      "location": {
+        "_class": "com.cognizant.cars.dto.model.Location",
+        "lat": "47.13111",
+        "long": "-61.54801"
+      }
+    }
+  },
+  {
+    "_class": "com.cognizant.cars.dto.model.Car",
+    "_id": 2,
+    "make": "Chevrolet",
+    "model": "Corvette",
+    "year_model": 2004,
+    "price": 20019.64,
+    "licensed": true,
+    "date_added": "2018-01-27",
+    "warehouse" : {
+      "_class": "com.cognizant.cars.dto.model.Warehouse",
+      "_id": "1",
+      "name": "Warehouse A",
+      "location": {
+        "_class": "com.cognizant.cars.dto.model.Location",
+        "lat": "47.13111",
+        "long": "-61.54801"
+      }
+    }
+  },
+  {
+    "_class": "com.cognizant.cars.dto.model.Car",
+    "_id": 3,
+    "make": "Ford",
+    "model": "Expedition EL",
+    "year_model": 2008,
+    "price": 27323.42,
+    "licensed": false,
+    "date_added": "2018-07-03",
+    "warehouse" : {
+      "_class": "com.cognizant.cars.dto.model.Warehouse",
+      "_id": "1",
+      "name": "Warehouse A",
+      "location": {
+        "_class": "com.cognizant.cars.dto.model.Location",
+        "lat": "47.13111",
+        "long": "-61.54801"
+      }
+    }
+  },
+  {
+    "_class": "com.cognizant.cars.dto.model.Car",
+    "_id": 4,
+    "make": "Infiniti",
+    "model": "FX",
+    "year_model": 2010,
+    "price": 8541.62,
+    "licensed": true,
+    "date_added": "2018-03-23",
+    "warehouse" : {
+      "_class": "com.cognizant.cars.dto.model.Warehouse",
+      "_id": "1",
+      "name": "Warehouse A",
+      "location": {
+        "_class": "com.cognizant.cars.dto.model.Location",
+        "lat": "47.13111",
+        "long": "-61.54801"
+      }
+    }
+  },
+  {
+    "_class": "com.cognizant.cars.dto.model.Car",
+    "_id": 5,
+    "make": "GMC",
+    "model": "Safari",
+    "year_model": 1998,
+    "price": 14772.5,
+    "licensed": false,
+    "date_added": "2018-07-04",
+    "warehouse" : {
+      "_class": "com.cognizant.cars.dto.model.Warehouse",
+      "_id": "1",
+      "name": "Warehouse A",
+      "location": {
+        "_class": "com.cognizant.cars.dto.model.Location",
+        "lat": "47.13111",
+        "long": "-61.54801"
+      }
+    }
+  }
+]
