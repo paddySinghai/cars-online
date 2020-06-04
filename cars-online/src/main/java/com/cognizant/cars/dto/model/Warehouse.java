@@ -24,5 +24,4 @@ public class Warehouse implements Serializable {
   private String name;
 
   private Location location;
-
 }

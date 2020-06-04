@@ -16,7 +16,7 @@ import java.util.List;
 @Builder
 public class GenericOutputDto {
 
-  private List<Car> carList;
+  private List<Car> carsList;
   private String errorCode;
   private String errorMessage;
 }

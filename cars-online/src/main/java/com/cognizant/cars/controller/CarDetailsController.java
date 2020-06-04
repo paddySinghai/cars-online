@@ -22,12 +22,12 @@ public class CarDetailsController {
     this.carDetailsService = carDetailsService;
   }
 
-  // @ApiOperation(value = "Fetch All Stocks Details")
+  // @ApiOperation(value = "Fetch All Cars List")
   @GetMapping(
-      value = "/stocks",
+      value = "/carsList",
       headers = "Accept=application/json",
       produces = {MediaType.APPLICATION_JSON_VALUE})
-  public GenericOutputDto fetchCarList() throws CarsBusinessException {
-    return carDetailsService.fetchCarList();
+  public GenericOutputDto fetchCarsList() throws CarsBusinessException {
+    return carDetailsService.fetchCarsList();
   }
 }

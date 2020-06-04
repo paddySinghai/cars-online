@@ -1,0 +1,46 @@
+version: "3.7"
+networks:
+  cars_online_network:
+services:
+  cars-db-mongo:
+    container_name: cars-db-mongo
+    image: mongo:4.2
+    restart: always
+    environment:
+      MONGO_DB: mongodb
+      MONGO_USER: 
+      POSTGRES_PASSWORD: 
+    ports:
+      - 27017:27017
+    networks:
+      - cars_online_network
+  cars-online:
+    depends_on:
+      - cars-db-mongo
+    container_name: cars-online
+    image: cars-online:latest
+    build:
+      context: ./cars-online/
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - cars_online_network
+    links:
+      - cars-db-mongo
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mongodb://cars-db-mongo:27017/mongo
+  cars-online-fe:
+    depends_on:
+      - cars-online
+    container_name: cars-online-fe
+    image: cars-online:latest
+    build:
+      context: ./cars-online-fe/
+      dockerfile: Dockerfile
+    ports:
+      - 8000:80
+    networks:
+      - cars_online_network
+    links:
+      - cars-online

@@ -4,5 +4,5 @@ import com.cognizant.cars.dto.GenericOutputDto;
 import com.cognizant.cars.exception.CarsBusinessException;
 
 public interface CarDetailsService {
-  public GenericOutputDto fetchCarList() throws CarsBusinessException;
+    public GenericOutputDto fetchCarsList() throws CarsBusinessException;
 }
