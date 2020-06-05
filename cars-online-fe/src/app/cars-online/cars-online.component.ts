@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatDialog} from '@angular/material/dialog';
 import { HttpService } from '../http.service';
+import {Router} from '@angular/router'
 
 export interface Car {
   id: Object;
@@ -18,16 +20,15 @@ export interface Car {
 export class CarsOnlineComponent implements OnInit {
   dataList: any;
   dataSource = new MatTableDataSource<Car>(this.dataList);
-  constructor(private _http: HttpService) {}
-
-  displayedColumns: string[] = ['make','date_added'];
+  constructor(private _http: HttpService,private _router:Router) {}
+  
+  displayedColumns: string[] = ['make','model','date_added'];
 
   ngOnInit(): void {
     this._http.getCarsList().subscribe(dataList => {
       this.dataList = dataList;
-      this.dataSource = new MatTableDataSource<Car>(this.dataList.carsList);
+      this.dataSource = new MatTableDataSource<Car>(this.dataList.cars);
       
     });
   }
-
 }
