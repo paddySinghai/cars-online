@@ -38,7 +38,7 @@ public class CarDetailsControllerTest {
     Car car1 = Car.builder().make("Volkswagen").model("Jetta III").year_model(1995).build();
     Car car2 = Car.builder().make("Volkswagen").model("Jetta III").year_model(2000).build();
     List<Car> expected = List.of(car1, car2);
-    GenericOutputDto outputDto = GenericOutputDto.builder().carsList(expected).build();
+    GenericOutputDto outputDto = GenericOutputDto.builder().cars(expected).build();
     given(carDetailsService.fetchCarsList()).willReturn(outputDto);
     mockMvc.perform(get("/cars/carsList")).andExpect(status().isOk());
   }

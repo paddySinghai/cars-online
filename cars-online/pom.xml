@@ -77,6 +77,12 @@
             <version>${swagger.version}</version>
             <scope>compile</scope>
         </dependency>
+        <!-- Start:: Prometheus dependency -->
+        <dependency>
+            <groupId>io.micrometer</groupId>
+            <artifactId>micrometer-registry-prometheus</artifactId>
+        </dependency>
+        <!-- End:: Prometheus dependency -->
     </dependencies>
 
     <build>

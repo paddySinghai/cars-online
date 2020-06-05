@@ -28,7 +28,7 @@ import java.util.List;
         List<Car> expected = List.of(car1, car2);
         Mockito.when(carRepository.findAll()).thenReturn(expected);
         GenericOutputDto actual = carDetailsService.fetchCarsList();
-        Assertions.assertEquals(actual.getCarsList(), expected);
+        Assertions.assertEquals(actual.getCars(), expected);
     }
 
     @Test public void testFetchCarListException() throws CarsBusinessException {
