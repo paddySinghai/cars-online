@@ -1,0 +1,15 @@
+<h1 mat-dialog-title>Car Details</h1>
+<div mat-dialog-content>
+    <mat-list role="list">
+        <dl>
+            <dt>Model Name</dt>
+            <dd>- {{model.make}}</dd>
+            <dt>Date Added:</dt>
+            <dd>- {{model.date_added | date : 'medium'}}</dd>
+            <dt>Price(in EUR):</dt>
+            <dd>- {{model.price  | currency:'EUR'}}</dd>
+          </dl>
+    </mat-list>
+
+  <button mat-button mat-dialog-close>Close</button>
+</div>

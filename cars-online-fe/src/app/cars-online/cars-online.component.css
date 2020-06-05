@@ -1,4 +1,10 @@
 @import '@angular/material/prebuilt-themes/pink-bluegrey.css';
   
-  table {    width: 100%;
-  }
+table {
+  width: 100%;
+}
+
+th.mat-sort-header-sorted {
+  color: black;
+}
+  
