@@ -34,7 +34,7 @@ services:
     depends_on:
       - cars-online
     container_name: cars-online-fe
-    image: cars-online:0.0.1
+    image: cars-online-fe
     build:
       context: ./cars-online-fe/
       dockerfile: Dockerfile
