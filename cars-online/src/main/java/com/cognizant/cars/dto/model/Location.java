@@ -1,24 +1,25 @@
 package com.cognizant.cars.dto.model;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.*;
 
 import java.io.Serializable;
-
+/**
+ * Dto for Location Details
+ *
+ * @author Padmalaya Singhai
+ */
 @Getter
 @Setter
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Location implements Serializable {
+  @ApiModelProperty(value = "Latitude Value")
+  private String lat;
 
-    private String lat;
-
-    @JsonAlias(value = "long")
-    private String longitude;
-
+  @ApiModelProperty(value = "Longitude Value")
+  @JsonAlias(value = "long")
+  private String longitude;
 }

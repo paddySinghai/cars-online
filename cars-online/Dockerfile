@@ -20,13 +20,13 @@ RUN mvn -f /home/app/pom.xml clean package
 ##########################################################################################
 ## Step 2 : Build application image
 ##########################################################################################
-FROM adoptopenjdk/openjdk13:alpine-jre
+FROM adoptopenjdk/openjdk14:alpine-jre
 
 #
 LABEL maintainer="Padmalaya Singhai"
 
 # For storing the version in the image
-# ADD VERSION .
+ADD VERSION .
 
 # Copy jar file from build step
 COPY --from=maven_build /home/app/target/cars-online-*.jar cars-online.jar

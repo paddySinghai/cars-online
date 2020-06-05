@@ -9,7 +9,7 @@ services:
     environment:
       MONGO_DB: mongodb
       MONGO_USER: 
-      POSTGRES_PASSWORD: 
+      MONGO_PASSWORD: 
     ports:
       - 27017:27017
     networks:
@@ -18,7 +18,7 @@ services:
     depends_on:
       - cars-db-mongo
     container_name: cars-online
-    image: cars-online:latest
+    image: cars-online:0.0.1
     build:
       context: ./cars-online/
       dockerfile: Dockerfile
@@ -29,12 +29,12 @@ services:
     links:
       - cars-db-mongo
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mongodb://cars-db-mongo:27017/mongo
+      - SPRING_DATASOURCE_URL=mongodb://cars-db-mongo:27017/carsdb
   cars-online-fe:
     depends_on:
       - cars-online
     container_name: cars-online-fe
-    image: cars-online:latest
+    image: cars-online:0.0.1
     build:
       context: ./cars-online-fe/
       dockerfile: Dockerfile

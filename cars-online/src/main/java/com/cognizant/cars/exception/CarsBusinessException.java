@@ -5,6 +5,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * Exception class for Cars Online Module
+ *
+ * @author Padmalaya Singhai
+ */
 @Getter
 @Setter
 @AllArgsConstructor

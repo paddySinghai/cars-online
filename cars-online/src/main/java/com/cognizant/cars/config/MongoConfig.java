@@ -8,17 +8,20 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.data.repository.init.Jackson2RepositoryPopulatorFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+/**
+ * Configuration file for MongoDB
+ *
+ * @author Padmalaya Singhai
+ */
 @Configuration
 @EnableMongoRepositories(basePackages = {"com.cognizant.cars.repository"})
 @EnableTransactionManagement
 public class MongoConfig {
 
-    @Bean
-    public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() {
-        Jackson2RepositoryPopulatorFactoryBean factory =
-            new Jackson2RepositoryPopulatorFactoryBean();
-        factory.setResources(new Resource[] {new ClassPathResource("data.json")});
-        return factory;
-    }
-
+  @Bean
+  public Jackson2RepositoryPopulatorFactoryBean getRespositoryPopulator() {
+    Jackson2RepositoryPopulatorFactoryBean factory = new Jackson2RepositoryPopulatorFactoryBean();
+    factory.setResources(new Resource[] {new ClassPathResource("data.json")});
+    return factory;
+  }
 }

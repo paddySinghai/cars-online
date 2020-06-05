@@ -25,9 +25,8 @@ export class CarsOnlineComponent implements OnInit {
   ngOnInit(): void {
     this._http.getCarsList().subscribe(dataList => {
       this.dataList = dataList;
-      console.log(dataList);
       this.dataSource = new MatTableDataSource<Car>(this.dataList.carsList);
-      console.log(this.dataSource);
+      
     });
   }
 

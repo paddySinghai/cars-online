@@ -10,6 +10,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/**
+ * Service Implementation of CarDetailsService for fetching cars List and cara Details
+ *
+ * @author Padmalaya Singhai
+ */
 @Service
 public class CarDetailsServiceImpl implements CarDetailsService {
 
@@ -22,10 +27,10 @@ public class CarDetailsServiceImpl implements CarDetailsService {
 
   @Override
   public GenericOutputDto fetchCarsList() throws CarsBusinessException {
-    List<Car> carsList = carRepository.findAll();
-    if (carsList.isEmpty()) {
+    List<Car> cars = carRepository.findAll();
+    if (cars.isEmpty()) {
       throw new CarsBusinessException("NO_CARS_PRESENT", "No cars present!");
     }
-    return GenericOutputDto.builder().carsList(carsList).build();
+    return GenericOutputDto.builder().cars(cars).build();
   }
 }

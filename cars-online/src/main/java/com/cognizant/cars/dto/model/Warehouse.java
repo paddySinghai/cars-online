@@ -1,16 +1,17 @@
 package com.cognizant.cars.dto.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import io.swagger.annotations.ApiModelProperty;
+import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.io.Serializable;
-
+/**
+ * Dto for Warehouse Details
+ *
+ * @author Padmalaya Singhai
+ */
 @Document
 @Getter
 @Setter
@@ -18,10 +19,13 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Warehouse implements Serializable {
+  @ApiModelProperty(value = "Object Id")
+  @MongoId
+  private ObjectId id;
 
-  @MongoId private ObjectId id;
-
+  @ApiModelProperty(value = "Warehouse name")
   private String name;
 
+  @ApiModelProperty(value = "Location Details")
   private Location location;
 }
