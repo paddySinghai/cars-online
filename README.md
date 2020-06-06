@@ -28,6 +28,15 @@ docker-compose up --build
 
 * REST services can be accessed on http://localhost:8080/cars/carsList
 
+#### MongoDB Database connection
+
+* The database can be connected by using the folllowing details:
+```
+host=localhost
+port=27017
+database=carsdb
+```
+
 
 ### Stopping the application and cleaning-up
 ```

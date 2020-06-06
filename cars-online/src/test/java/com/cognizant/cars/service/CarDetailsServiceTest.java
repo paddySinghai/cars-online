@@ -12,28 +12,34 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Sort;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@ExtendWith({MockitoExtension.class}) public class CarDetailsServiceTest {
+@ExtendWith({MockitoExtension.class})
+public class CarDetailsServiceTest {
 
-    @Mock private CarRepository carRepository;
+    @Mock
+    private CarRepository carRepository;
 
-    @InjectMocks private CarDetailsServiceImpl carDetailsService;
+    @InjectMocks
+    private CarDetailsServiceImpl carDetailsService;
 
-    @Test public void testFetchCarList() throws CarsBusinessException {
+    @Test
+    public void testFetchCarList() throws CarsBusinessException {
         Car car1 = Car.builder().make("Volkswagen").model("Jetta III").year_model(1995).build();
         Car car2 = Car.builder().make("Volkswagen").model("Jetta III").year_model(2000).build();
         List<Car> expected = List.of(car1, car2);
-        Mockito.when(carRepository.findAll()).thenReturn(expected);
+        Mockito.when(carRepository.findAll(Sort.by("date_added").descending())).thenReturn(expected);
         GenericOutputDto actual = carDetailsService.fetchCarsList();
         Assertions.assertEquals(actual.getCars(), expected);
     }
 
-    @Test public void testFetchCarListException() throws CarsBusinessException {
+    @Test
+    public void testFetchCarListException() throws CarsBusinessException {
         List<Car> expected = new ArrayList<>();
-        Mockito.when(carRepository.findAll()).thenReturn(expected);
+        Mockito.when(carRepository.findAll(Sort.by("date_added").descending())).thenReturn(expected);
         Assertions.assertThrows(CarsBusinessException.class, () -> {
             carDetailsService.fetchCarsList();
         }, "No cars present!");

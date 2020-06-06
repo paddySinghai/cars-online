@@ -18,7 +18,7 @@ services:
     depends_on:
       - cars-db-mongo
     container_name: cars-online
-    image: cars-online:0.0.1
+    image: cars-online:latest
     build:
       context: ./cars-online/
       dockerfile: Dockerfile
@@ -34,7 +34,7 @@ services:
     depends_on:
       - cars-online
     container_name: cars-online-fe
-    image: cars-online-fe
+    image: cars-online-fe:latest
     build:
       context: ./cars-online-fe/
       dockerfile: Dockerfile
