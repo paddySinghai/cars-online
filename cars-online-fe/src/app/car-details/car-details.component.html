@@ -1,15 +1,37 @@
 <h1 mat-dialog-title>Car Details</h1>
-<div mat-dialog-content>
-    <mat-list role="list">
-        <dl>
-            <dt>Model Name</dt>
-            <dd>- {{model.make}}</dd>
-            <dt>Date Added:</dt>
-            <dd>- {{model.date_added | date : 'medium'}}</dd>
-            <dt>Price(in EUR):</dt>
-            <dd>- {{model.price  | currency:'EUR'}}</dd>
-          </dl>
-    </mat-list>
+<mat-dialog-content>
 
-  <button mat-button mat-dialog-close>Close</button>
-</div>
+    <table>
+        <tr>
+          <td>Model Name</td>
+          <td>{{model.make}}</td>
+        </tr>
+        <tr>
+          <td>Date Added</td>
+          <td>{{model.date_added | date : 'medium'}}</td>
+        </tr>
+        <tr>
+            <td>Price(in EUR)</td>
+            <td>{{model.price  | currency:'EUR'}}</td>
+        </tr>
+        <tr>
+            <td>Licensed</td>
+            <td>{{model.licensed?'Yes':'No'}}</td>
+        </tr>
+        <tr>
+            <td>Warehouse Details</td>
+            <td>
+                <ul style="list-style-type:none;">
+                    <li *ngFor="let warehouse of model.warehouse; let i = index">
+                    {{warehouse.name}}, Location: {{warehouse.location.lat}} , {{warehouse.location.longitude}}
+                    </li>
+                </ul>
+            </td>
+        </tr>
+      </table>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Add to Cart</button>
+  </mat-dialog-actions>
+  
