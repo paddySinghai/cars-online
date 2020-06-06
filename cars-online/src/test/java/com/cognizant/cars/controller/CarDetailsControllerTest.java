@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.mockito.BDDMockito.given;
@@ -35,11 +36,25 @@ public class CarDetailsControllerTest {
 
   @Test
   public void tesFetchCarList() throws Exception {
-    Car car1 = Car.builder().make("Volkswagen").model("Jetta III").year_model(1995).build();
-    Car car2 = Car.builder().make("Volkswagen").model("Jetta III").year_model(2000).build();
+    // given
+    Car car1 =
+        Car.builder()
+            .make("Volkswagen")
+            .model("Jetta III")
+            .year_model(1995)
+            .date_added(LocalDate.parse("2020-01-08"))
+            .build();
+    Car car2 =
+        Car.builder()
+            .make("Volkswagen")
+            .model("Jetta III")
+            .date_added(LocalDate.parse("2019-01-08"))
+            .year_model(2000)
+            .build();
     List<Car> expected = List.of(car1, car2);
     GenericOutputDto outputDto = GenericOutputDto.builder().cars(expected).build();
     given(carDetailsService.fetchCarsList()).willReturn(outputDto);
+
     mockMvc.perform(get("/cars/carsList")).andExpect(status().isOk());
   }
 }

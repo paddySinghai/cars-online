@@ -14,34 +14,57 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.domain.Sort;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @ExtendWith({MockitoExtension.class})
 public class CarDetailsServiceTest {
 
-    @Mock
-    private CarRepository carRepository;
+  @Mock
+  private CarRepository carRepository;
 
-    @InjectMocks
-    private CarDetailsServiceImpl carDetailsService;
+  @InjectMocks
+  private CarDetailsServiceImpl carDetailsService;
 
-    @Test
-    public void testFetchCarList() throws CarsBusinessException {
-        Car car1 = Car.builder().make("Volkswagen").model("Jetta III").year_model(1995).build();
-        Car car2 = Car.builder().make("Volkswagen").model("Jetta III").year_model(2000).build();
-        List<Car> expected = List.of(car1, car2);
-        Mockito.when(carRepository.findAll(Sort.by("date_added").descending())).thenReturn(expected);
-        GenericOutputDto actual = carDetailsService.fetchCarsList();
-        Assertions.assertEquals(actual.getCars(), expected);
-    }
+  @Test
+  public void testFetchCarList() throws CarsBusinessException {
+    // given
+    Car car1 =
+        Car.builder()
+            .make("Volkswagen")
+            .model("Jetta III")
+            .year_model(1995)
+            .date_added(LocalDate.parse("2020-01-08"))
+            .build();
+    Car car2 =
+        Car.builder()
+            .make("Volkswagen")
+            .model("Jetta III")
+            .year_model(2000)
+            .date_added(LocalDate.parse("2019-01-08"))
+            .build();
+    List<Car> expected = List.of(car1, car2);
+    // when
+    Mockito.when(carRepository.findAll(Sort.by("date_added").descending())).thenReturn(expected);
+    GenericOutputDto actual = carDetailsService.fetchCarsList();
+    // then
+    Assertions.assertEquals(actual.getCars(), expected);
+    Assertions.assertEquals(actual.getCars().get(0), car1);
+  }
 
-    @Test
-    public void testFetchCarListException() throws CarsBusinessException {
-        List<Car> expected = new ArrayList<>();
-        Mockito.when(carRepository.findAll(Sort.by("date_added").descending())).thenReturn(expected);
-        Assertions.assertThrows(CarsBusinessException.class, () -> {
-            carDetailsService.fetchCarsList();
-        }, "No cars present!");
-    }
+  @Test
+  public void testFetchCarListException() throws CarsBusinessException {
+    // given
+    List<Car> expected = new ArrayList<>();
+    // when
+    Mockito.when(carRepository.findAll(Sort.by("date_added").descending())).thenReturn(expected);
+    // then
+    Assertions.assertThrows(
+        CarsBusinessException.class,
+        () -> {
+          carDetailsService.fetchCarsList();
+        },
+        "No cars present!");
+  }
 }
