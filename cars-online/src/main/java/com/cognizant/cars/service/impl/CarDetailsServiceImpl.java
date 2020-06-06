@@ -6,6 +6,7 @@ import com.cognizant.cars.exception.CarsBusinessException;
 import com.cognizant.cars.repository.CarRepository;
 import com.cognizant.cars.service.CarDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -27,7 +28,7 @@ public class CarDetailsServiceImpl implements CarDetailsService {
 
   @Override
   public GenericOutputDto fetchCarsList() throws CarsBusinessException {
-    List<Car> cars = carRepository.findAll();
+    List<Car> cars = carRepository.findAll(Sort.by("date_added").descending());
     if (cars.isEmpty()) {
       throw new CarsBusinessException("NO_CARS_PRESENT", "No cars present!");
     }
