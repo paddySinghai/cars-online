@@ -28,8 +28,6 @@ services:
       - cars_online_network
     links:
       - cars-db-mongo
-    environment:
-      - SPRING_DATASOURCE_URL=mongodb://cars-db-mongo:27017/carsdb
   cars-online-fe:
     depends_on:
       - cars-online
