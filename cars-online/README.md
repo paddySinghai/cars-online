@@ -22,6 +22,7 @@ Clone the git repository in a local directory using git clone<repository_name> c
 1. Build the jar file using the command: mvn clean install.
 2. Build the docker image of the same using the command: <B> docker build -f Dockerfile -t cars-online .</B>
 3. Image details can be viewed using <B> docker image ls </B>
-4. Return a list of cars :: Request Type: GET || URL: http://localhost:8080/cars/carsList  
-5. Swagger UI URL: http://localhost:8080/swagger-ui.html  
-6. Prometheus URL: http://localhost:8080/actuator/prometheus   
+4. Run the docker image using the command: docker run -p 8080:8080 -t cars-online .
+5. Return a list of cars :: Request Type: GET || URL: http://localhost:8080/cars/carsList  
+6. Swagger UI URL: http://localhost:8080/swagger-ui.html  
+7. Prometheus URL: http://localhost:8080/actuator/prometheus   
