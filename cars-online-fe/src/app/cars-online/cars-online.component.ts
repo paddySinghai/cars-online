@@ -38,7 +38,6 @@ export class CarsOnlineComponent implements OnInit {
     });
   }
   showCarDetails (carObj : Car): void{
-    console.log(carObj);
     this._dialouge.open(CarDetailsComponent,{
       data: carObj
     });

@@ -1,0 +1,17 @@
+<div class="ng-container" style="width:50%">
+<mat-card class="card">Shopping Cart Total : {{sum |  currency:'EUR'}}</mat-card>
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  
+      <ng-container matColumnDef="item" style="padding-left:20px;">
+          <th mat-header-cell *matHeaderCellDef >Item</th>
+          <td mat-cell *matCellDef="let element"> {{element.make}} {{element.model}}</td>
+        </ng-container>
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef>Price</th>
+          <td mat-cell *matCellDef="let element"> {{element.price | currency:'EUR'}} </td>
+        </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

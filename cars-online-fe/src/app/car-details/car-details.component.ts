@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Router } from '@angular/router';
+
 export interface Car {
   id: Object;
   make: string;
@@ -15,6 +17,14 @@ export interface Car {
   styleUrls: ['./car-details.component.css']
 })
 export class CarDetailsComponent{
-  constructor(@Inject (MAT_DIALOG_DATA) public data: Car) {}
+  carsList =[];
+  constructor(@Inject (MAT_DIALOG_DATA) public data: Car,private router: Router) {}
    model: Car=this.data;
+
+   addTocart(carObj:Car) :void {
+    this.carsList.push(carObj);
+    this.router.navigate(['./checkout'], {state: {data: this.carsList}});
+ 
+   }
+
 }
