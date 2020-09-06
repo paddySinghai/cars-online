@@ -1,4 +1,4 @@
-# Stock-Management-Module
+# Cars Online-Module
 The core function of the module is to implement RESTful Java based backend application for a car-website.
 
 ## Getting Started
